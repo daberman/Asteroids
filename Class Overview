@@ -1,0 +1,53 @@
+**Main
+  - Holds a Game object that contains the entire state of the game
+  Loops to:
+  - Call update on the Game object
+  - Draw the current state of the game
+  
+**Game
+  Variables:
+    - Ship
+    - Array of Asteroids
+    - Array of bullets?
+    
+  Methods:
+    - Update: has all the objects move
+    - Is this where we'd take the user input from the keys for moving/firing? 
+      Or would that be in Main and passed in through this method?
+    - Do we want a method for game over? Or could that be handled as a return from Update?
+      Need to know if player has won, or player has run out of lives, so maybe should be its own method(s)?
+      
+**Ship
+  Variables:
+    - Location
+    - Direction
+    - Until we add some sort of engine object, #define a variable for how fast to move?
+    - Current speed
+  
+  Methods:
+    - Move: updates location based on current speed
+    - Fire: return a bullet object
+      (maybe a publicly defined struct w/ array and size of array)
+    - Fly: updates current speed and direction based on user input
+    - Get location
+    - Get direction
+    - // For later, maybe a change engine/gun/hull/etc set of methods
+    
+**Asteroid
+  Variables:
+  - Location
+  - Direction of travel
+  - Speed
+  - Size (could this be managed by just having different types of asteroids that are subtypes of the Asteroid class?)
+  
+  Methods:
+    
+**Global Variables?
+   Do we want/need a class for some globally accessible variables that all the different classes can use for constinency?
+   EG: an enum Directions, so we can update all the different objects (bullet, ship, asteroid) using the same
+    pre-defined set of directions (N, NE, E, etc)
+    
+**GameObjects Class?
+  I'm starting to notice that there are actually a lot of general methods/variables related to location/moving that are
+    shared by Ship, Asteroid and Bullet. Should they maybe all just inherit those basics from a superclass? And then the
+    Game object would only hold a single array of GameObjects?
